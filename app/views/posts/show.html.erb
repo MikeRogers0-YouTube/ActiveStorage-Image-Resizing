@@ -5,5 +5,13 @@
   <%= @post.title %>
 </p>
 
+<p>
+  <strong>Avatar:</strong><br />
+  <%= image_tag @post.avatar.variant(
+    format: :png,
+    resize_and_pad: [400, 400, gravity: 'north', background: :transparent]
+  ) %>
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
