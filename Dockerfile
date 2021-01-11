@@ -35,6 +35,10 @@ RUN apk --no-cache add \
       # Fixes watch file issues with things like HMR
       libnotify-dev
 
+RUN apk --no-cache add \
+      poppler-utils \
+      ffmpeg
+
 # Install any extra dependencies via Aptfile - These are installed on Heroku
 # COPY Aptfile /usr/src/app/Aptfile
 # RUN apk add --update $(cat /usr/src/app/Aptfile | xargs)
