@@ -7,10 +7,15 @@
 
 <p>
   <strong>Avatar:</strong><br />
-  <%= image_tag @post.avatar.variant(
-    format: :png,
-    resize_and_pad: [400, 400, gravity: 'north', background: :transparent]
-  ) %>
+  <% if @post.avatar.previewable? %>
+    <%= image_tag @post.avatar.preview(
+      resize_to_fit: [500, 500]
+    ) %>
+  <% elsif @post.avatar.variable? %>
+    <%= image_tag @post.avatar.variant(
+      resize_to_fit: [500, 500]
+    ) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
